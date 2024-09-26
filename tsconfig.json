@@ -1,22 +1,22 @@
 {
   "compilerOptions": {
-    "outDir": "./dist",                                  /* Output folder for compiled JavaScript files. */
-    "rootDir": "./api",                                  /* Specify the root folder within your source files. */
-    "target": "es2016",                                  /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
-    "module": "commonjs",                                /* Specify what module code is generated. */
-    "resolveJsonModule": true,                           /* Enable importing .json files. */
-    "sourceMap": true,                                   /* Create source map files for emitted JavaScript files. */
-    "esModuleInterop": true,                             /* Emit additional JavaScript to ease support for importing CommonJS modules. */
-    "forceConsistentCasingInFileNames": true,            /* Ensure that casing is correct in imports. */
-    "strict": true,                                      /* Enable all strict type-checking options. */
-    "strictNullChecks": true,                            /* When type checking, take into account 'null' and 'undefined'. */
-    "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
+    "outDir": "./dist",          /* Output folder for compiled JavaScript files. */
+    "rootDir": "./api",          /* Specify the root folder within your source files. */
+    "target": "es2016",          /* Set the JavaScript language version for emitted JavaScript. */
+    "module": "commonjs",        /* Specify what module code is generated. */
+    "resolveJsonModule": true,   /* Enable importing .json files. */
+    "sourceMap": true,           /* Create source map files for emitted JavaScript files. */
+    "esModuleInterop": true,     /* Emit additional JavaScript to ease support for importing CommonJS modules. */
+    "forceConsistentCasingInFileNames": true,  /* Ensure that casing is correct in imports. */
+    "strict": true,              /* Enable all strict type-checking options. */
+    "strictNullChecks": true,    /* When type checking, take into account 'null' and 'undefined'. */
+    "skipLibCheck": true         /* Skip type checking all .d.ts files. */
   },
   "include": [
-    "api/**/*.ts"                                       /* Include all TypeScript files in the 'api' folder */
+    "api/**/*.ts"               /* Include all TypeScript files in the 'api' folder */
   ],
   "exclude": [
-    "node_modules",                                     /* Exclude 'node_modules' */
-    "dist"                                              /* Exclude 'dist' folder */
+    "node_modules",             /* Exclude 'node_modules' */
+    "dist"                      /* Exclude 'dist' folder */
   ]
 }
