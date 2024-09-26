@@ -1,29 +1,30 @@
 // Import Dotenv
-require("dotenv").config();
+import dotenv from "dotenv";
+dotenv.config();
 
 // Import Express
 import express, { Request, Response, NextFunction } from "express";
-import dotenv from "dotenv";
 
-// Import CORS
-const cors = require("cors");
+// Import CORS and Axios
+import cors from "cors";
+import axios from "axios";
 
-// Import Axios
-const axios = require("axios");
-
-// create an express application
+// Create an express application
 const app = express();
 
-// define a port
-const PORT = process.env.PORT;
+// Define a port with a fallback option
+const PORT = process.env.PORT || 3000;
+
+// Debugging: Ensure environment variables are loaded
+// console.log("PORT:", process.env.PORT);
+// console.log("BEVERAGE_CLIENT:", process.env.BEVERAGE_CLIENT);
 
 // Define our Middleware
 // Use CORS Middleware
 const corsOptions = {
-  origin: process.env.BEVERAGE_CLIENT,
+  // origin: process.env,
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
-
 app.use(cors(corsOptions));
 
 // Use JSON middleware to parse request bodies
@@ -32,7 +33,7 @@ app.use(express.json());
 // Define our Routes
 // Home Route
 app.get("/", (request: Request, response: Response, next: NextFunction) => {
-  response.json({ message: "welcome to our server" });
+  response.json({ message: "Welcome to our server!" });
 });
 
 // Error Handling
@@ -56,10 +57,10 @@ app.use((request: Request, response: Response, next: NextFunction) => {
   });
 });
 
-// make the server listen on our port
+// Make the server listen on our port
 const server = app.listen(PORT, () => {
   console.log(`The server is running on http://localhost:${PORT}`);
 });
 
-// export our app for testing
+// Export our app for testing
 module.exports = app;
