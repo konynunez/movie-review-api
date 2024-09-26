@@ -1,0 +1,21 @@
+{
+  "name": "movie-review-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "This is a **Movie Review API** built using **Express**, **TypeScript**, and the **Supabase REST API**. The API allows users to manage movies, add reviews for movies, and rate the reviews. It demonstrates full CRUD operations and uses Supabase for database storage and relationship management between movies, reviews, and ratings.",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0"
+  },
+  "devDependencies": {
+    "@types/dotenv": "^6.1.1",
+    "@types/express": "^5.0.0",
+    "typescript": "^5.6.2"
+  }
+}
