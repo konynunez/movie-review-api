@@ -17,12 +17,12 @@ const PORT = process.env.PORT || 3000;
 
 // Debugging: Ensure environment variables are loaded
 // console.log("PORT:", process.env.PORT);
-// console.log("BEVERAGE_CLIENT:", process.env.BEVERAGE_CLIENT);
+// console.log("MOVIE-API_CLIENT:", process.env.MOVIE_API_CLIENT);
 
 // Define our Middleware
 // Use CORS Middleware
 const corsOptions = {
-  // origin: process.env,
+  origin: process.env.MOVIE_API_CLIENT || "*",
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
 app.use(cors(corsOptions));
