@@ -1,30 +1,40 @@
 // Import Dotenv
-import dotenv from "dotenv";
-dotenv.config();
+require("dotenv").config();
 
 // Import Express
 import express, { Request, Response, NextFunction } from "express";
+import dotenv from "dotenv";
 
-// Import CORS and Axios
-import cors from "cors";
-import axios from "axios";
+import supabase from "../supabaseInstance";
 
-// Create an express application
+// Import CORS
+const cors = require("cors");
+
+// Import Axios
+const axios = require("axios");
+
+// Import our routes
+import { getAllMovies, addMovie } from "./routes/movies";
+import { getReviewsByID, postReview } from "./routes/reviews";
+import {
+  getRatingsByID,
+  postRating,
+  getAverageRatingByMovieID,
+} from "./routes/reviewRatings";
+
+// create an express application
 const app = express();
 
-// Define a port with a fallback option
-const PORT = process.env.PORT || 3000;
-
-// Debugging: Ensure environment variables are loaded
-// console.log("PORT:", process.env.PORT);
-// console.log("MOVIE-API_CLIENT:", process.env.MOVIE_API_CLIENT);
+// define a port
+const PORT = process.env.PORT;
 
 // Define our Middleware
 // Use CORS Middleware
 const corsOptions = {
-  origin: process.env.MOVIE_API_CLIENT || "*",
+  origin: process.env.CLIENT_URL,
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
+
 app.use(cors(corsOptions));
 
 // Use JSON middleware to parse request bodies
@@ -33,8 +43,29 @@ app.use(express.json());
 // Define our Routes
 // Home Route
 app.get("/", (request: Request, response: Response, next: NextFunction) => {
-  response.json({ message: "Welcome to our server!" });
+  response.json({ message: "welcome to our server" });
 });
+
+// POST a movie
+app.post("/movies", addMovie);
+
+// GET all Movies
+app.get("/movies", getAllMovies);
+
+// GET all reviews for movie
+app.get("/movies/:id/reviews", getReviewsByID);
+
+// GET all ratings for review
+app.get("/reviews/:id/ratings", getRatingsByID);
+
+// GET average ratings for movie
+app.get("/movies/:id/average-rating", getAverageRatingByMovieID);
+
+// POST a review for movie
+app.post("/movies/:id/reviews", postReview);
+
+// POST a rating for a review
+app.post("/reviews/:id/rate", postRating);
 
 // Error Handling
 // Generic Error Handling
@@ -57,10 +88,10 @@ app.use((request: Request, response: Response, next: NextFunction) => {
   });
 });
 
-// Make the server listen on our port
+// make the server listen on our port
 const server = app.listen(PORT, () => {
   console.log(`The server is running on http://localhost:${PORT}`);
 });
 
-// Export our app for testing
+// export our app for testing
 module.exports = app;
